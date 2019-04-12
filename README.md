@@ -48,3 +48,47 @@ We can now see our image using `docker images` Let's run our image we just creat
 `docker ps` - Show running containers
 
 `docker ps -a` - Show running + stopped containers
+
+## Labs
+These labs will use the `ubuntu:latest` image
+### Lab 1
+* `FROM ubuntu:latest`
+* Update image
+  * `apt update`
+* Install sudo
+  * `apt install -y sudo`
+* Add docker user 
+  * `echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers`
+* Add docker user to sudo 
+  * `usermod -aG sudo docker`
+* Add user to sudoers file
+  * `echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers`
+* Build the image and tag it pathfinder:lab1
+
+### Lab 2
+* Take the same Dockerfile from lab 1, but add the apache2 package. 
+* Expose port 80
+* Add the following lines to the dockerfile
+```Dockerfile
+#Set environment variables for apache
+ENV APACHE_RUN_USER=www-data \
+  APACHE_RUN_GROUP=www-data \
+  APACHE_LOG_DIR=/var/log/apache2 \
+  APACHE_PID_FILE=/var/run/apache2.pid \
+  APACHE_RUN_DIR=/var/run/apache2 \
+  APACHE_LOCK_DIR=/var/lock/apache2
+
+#Create directories
+RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
+```
+* Add `CMD ["apache2", "-D", "FOREGROUND"]` to end of the `Dockerfile`
+* Build and tag this image `pathfinder:lab2` 
+* Run the image and map port 80 to 80
+* Visit localhost
+
+### Lab 3
+* Build off the second lab
+* `COPY` or `ADD` the index.html file into /var/www/html/index.html
+* Build and tag this image `pathfinder:lab3` 
+* Run the image and map port 80 to 80
+* Visit localhost
