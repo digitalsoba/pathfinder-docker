@@ -23,4 +23,13 @@ You can check that your image was built by running:
 To run the container:
     ``` $ docker run --rm -it firstcontainer:latest /bin/bash ```
 
+    Breakdown of command:
+	- docker run -- Run a command in a new container
+	- --rm -- Automatically remove the container when it exits
+	- -it -- Interacive terminal
+	- firstcontainer:latest -- Name of image to use
+	- /bin/bash -- Command to execute when container starts
+
 Check that vim was installed by creating a file. 
+
+Note: that you can combine instructions into a single layer. See the example Dockerfile in the combine-statements directory
