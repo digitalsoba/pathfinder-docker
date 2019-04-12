@@ -14,7 +14,7 @@ Now let's create a simple dockerfile and use the ubuntu:latest as are base image
     The contents of the file: 
         FROM ubuntu:latest
         RUN apt-get update
-        RUN apt-get -y install vim
+        RUN apt-get install vim
 
 We now have a complete dockerfile and it is time to build our container. To do that we use the following command:
     ``` $ docker build -t firstcontainer . ```
