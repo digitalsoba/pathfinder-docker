@@ -58,7 +58,7 @@ These labs will use the `ubuntu:latest` image
 * Install sudo
   * `apt install -y sudo`
 * Add docker user 
-  * `echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers`
+  * `adduser --disabled-password --gecos '' docker`
 * Add docker user to sudo 
   * `usermod -aG sudo docker`
 * Add user to sudoers file
