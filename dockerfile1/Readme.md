@@ -1,4 +1,4 @@
-Before we get started, let's cover the FROM and RUN instructions. 
+This section is going to cover the FROM and RUN instructions. 
 
 Every dockerfile must start with the FROM instruction. This is the starting point of our container and is called the base image. 
 You can use any image available on the docker registry. To find a list of available images go to https://hub.docker.com. When first starting
@@ -11,10 +11,11 @@ The Dockerfile1 directory contains a simple Dockerfile that install's vim and cu
 
 To build the image run:
     ``` $ docker build -t firstcontainer . ```
+
     Breakdown of command:
-    - docker build -- Build an image from a dockerfile
-    -t -- Name/tag your image 
-    - . -- Instructs docker to use the Dockerfile in the current directory
+	- docker build -- Build an image from a dockerfile
+	- -t -- Name/tag your image
+	- . -- Instructs docker to use the Dockerfile in the current directory
 
 You can check that your image was built by running: 
     ``` $ docker images ```
